@@ -5,16 +5,21 @@
 <style>
 * {box-sizing: border-box}
 body {font-family: "Lato", sans-serif;}
-.mySlides {display: none}
+/*.mySlides {display: none}*/
 img {vertical-align: middle;}
 
 /* Style the tab */
 .tab {
-  float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  width: 10%;
-  height: 900px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: tan;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
 /* Style the buttons inside the tab */
@@ -38,9 +43,9 @@ img {vertical-align: middle;}
 }
 
 /* Create an active/current "tab button" class */
-.tab button.active {
+/*.tab button.active {
   background-color: #ccc;
-}
+}*/
 
 /* Style the tab content */
 .tabcontent {
@@ -50,6 +55,27 @@ img {vertical-align: middle;}
   width: 70%;
   border-left: none;
   height: 300px;
+}
+
+.tab .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
 }
 
 .main {
@@ -102,7 +128,7 @@ img {vertical-align: middle;}
 
 /* Caption text */
 .text {
-  color: black;
+  color: white;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
@@ -111,7 +137,7 @@ img {vertical-align: middle;}
   text-align: center;
 }
 
-/* Caption text */
+/* Audio */
 .audio {
   position: relative;
   left: 4%;
@@ -124,7 +150,7 @@ img {vertical-align: middle;}
 }
 
 /* Fading animation */
-.fade {
+/*.fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
@@ -134,12 +160,12 @@ img {vertical-align: middle;}
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
-}
+}*/
 
-@keyframes fade {
+/*@keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
-}
+}*/
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
@@ -150,12 +176,18 @@ img {vertical-align: middle;}
 </head>
 <body>
 
-<h2>Hello Yolo</h2>
+<!-- <h2>Hello Yolo</h2> -->
 
-<div class="tab">
+<div id='mySidebar' class="tab">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <button class="tablinks" onclick="bookChoice(event, 'Malars big house')" id="defaultOpen">Malar's big house</button>
   <button class="tablinks" onclick="bookChoice(event, 'Why do sunflowers love the sun?')">Why do sunflowers love the sun?</button>
   <button class="tablinks" onclick="bookChoice(event, 'Pearlie in Paris')">Pearlie in Paris</button>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">☰ Books</button>  
+  <h2>Hello Yolo</h2>
 </div>
 
 <!-- Load pages for Malar's big house -->
@@ -476,6 +508,16 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
+}
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
 }
 </script>
    
