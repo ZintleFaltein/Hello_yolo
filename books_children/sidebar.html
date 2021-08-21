@@ -3,9 +3,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
-/*.mySlides {display: none}*/
+body {
+  font-family: "Bradley Hand", cursive; 
+  height: 100%;}
 img {vertical-align: middle;}
 
 /* Style the tab */
@@ -35,6 +35,7 @@ img {vertical-align: middle;}
   cursor: pointer;
   transition: 0.3s;
   font-size: 17px;
+  font-family: cursive;
 }
 
 /* Change background color of buttons on hover */
@@ -74,14 +75,28 @@ img {vertical-align: middle;}
 }
 
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 8px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  transition: margin-left .5s;
+  /*margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 8px; /* Increased text to enable scrolling */*/
+  padding: 16px;
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
+}
+
+.bg {
+  /* The image used */
+  background-image: url("faltein.jpg");
+
+  /* Full height */
+  height: 500%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 </style>
@@ -92,15 +107,19 @@ img {vertical-align: middle;}
 
 <div id='mySidebar' class="tab">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <button class="tablinks" onclick="bookChoice(event, 'Malars big house')" id="defaultOpen">Malar's big house</button>
+  <button class="tablinks" onclick="bookChoice(event, 'Home')" id="defaultOpen">Home</button>
+  <button class="tablinks" onclick="bookChoice(event, 'Malars big house')">Malar's big house</button>
   <button class="tablinks" onclick="bookChoice(event, 'Why do sunflowers love the sun?')">Why do sunflowers love the sun?</button>
   <button class="tablinks" onclick="bookChoice(event, 'Pearlie in Paris')">Pearlie in Paris</button>
 </div>
 
-<div id="main">
-  <button class="openbtn" onclick="openNav()">☰ Books</button>  
-  <h2>Hello Yolo</h2>
-</div>
+<div class="bg"></div>
+
+<div class="bg" id="main">
+  <button class="openbtn" onclick="openNav()" style="font-family: cursive;">☰ Books</button>  
+  <h2>FALTEIN READING CLUB</h2>
+<!--   <img src="faltein.jpg" width="100%" height="10%">
+ --></div>
 
 <!-- Load Malar's big house -->
 <div id="Malars big house" class="tabcontent">
@@ -109,8 +128,8 @@ img {vertical-align: middle;}
 
 
 <!-- Load Why do sunflowers love the sun? -->
-<div id="Why do sunflowers love the sun?" class="tabcontent">
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRvbFQze23Tm_33ZwzMbHqTnyK4p0TE9ktvlWZhXDR9Y2mMy2Zj-2eNkdgEqBxC2x3hxg9rz8ajW8or/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="450" webkitallowfullscreen="true"></iframe>
+<div id="Why do sunflowers love the sun?" class="tabcontent">    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRvbFQze23Tm_33ZwzMbHqTnyK4p0TE9ktvlWZhXDR9Y2mMy2Zj-2eNkdgEqBxC2x3hxg9rz8ajW8or/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="450" webkitallowfullscreen="true"></iframe>
+</div>
 </div>
 
 <div id="Tokyo" class="tabcontent">
@@ -145,22 +164,6 @@ function plusSlides(n) {
 
 function currentSlide(n) {
   showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
 }
 
 function openNav() {
