@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Bradley Hand", cursive; 
+  height: 100%;}
+img {vertical-align: middle;}
+
+/* Style the tab */
+.tab {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: tan;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+  font-family: cursive;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  /*border: 1px solid #ccc;*/
+  width: 70%;
+  border-left: none;
+  height: 300px;
+}
+
+.tab .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.main {
+  transition: margin-left .5s;
+  /*margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 8px; /* Increased text to enable scrolling */*/
+  padding: 16px;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 500px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+.bg {
+  /* The image used */
+  background-image: url("faltein.jpg");
+
+  /* Full height */
+  height: 180%; 
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;%;
+}
+
+</style>
+</head>
+<body>
+
+<!-- <h2>Hello Yolo</h2> -->
+
+<div id='mySidebar' class="tab">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <button class="tablinks" onclick="bookChoice(event, 'Home')" id="defaultOpen">Home</button>
+  <button class="tablinks" onclick="bookChoice(event, 'Dorina in the enchanted sea of Capri')" id="defaultOpen">Dorina in the enchanted sea of Capri</button>
+  <button class="tablinks" onclick="bookChoice(event, 'The mystery of the cyber friend')">The mystery of the cyber friend</button>
+  <button class="tablinks" onclick="bookChoice(event, 'Samantha the girl scientist')">Samantha the girl scientist</button>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()" style="font-family: cursive;">☰ Books</button>  
+  <h2>FALTEIN READING CLUB</h2>
+</div>
+
+<div id="Home" class="tabcontent">
+  <div class="bg"></div>
+</div>
+
+<!-- Load Malar's big house -->
+<div id="Dorina in the enchanted sea of Capri" class="tabcontent">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRybl5J8twr9IcsXLN36LbVar2wKzGt7dsGjIX8ruqqFvBZ22cfeSvb12Y9r3ulpNEwr5609Xq53ZYa/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="450" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+
+<!-- The mystery of the cyber friend -->
+<div id="The mystery of the cyber friend" class="tabcontent">    
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ-1yr5h9-rd5yw9oo8BiymE4vFdUodQ3CX7jCC6GHO0VRojvr9DWzZ2dAJEhidziZkNPk0pPfuDqHu/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="450" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+</div>
+
+<!-- Load Why do sunflowers love the sun? -->
+<div id="Samantha the girl scientist" class="tabcontent">    
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSNbA5YfTEJLWo-Y_jzVV6ot-wlDSR-5j1RGVT8VIqwavW2kRW0nOzPxgiLpXvHMSDF-zZTLBd-I_3P/embed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="450" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+</div>
+
+<script>
+function bookChoice(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+   
+</body>
+</html> 
